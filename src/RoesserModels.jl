@@ -67,7 +67,7 @@ end
 Simulates the Roesser model in an iterative approach.
 
 """->
-function simulate(system::RoesserModel, input)
+function simulate(system::RoesserModel, inputs)
   if system.in_dim > 1 && size(inputs,3) != system.in_dim
     error("Input dimension mismatch")
   end
@@ -89,9 +89,10 @@ function simulate(system::RoesserModel, input)
   D = system.D
   for i = 1:M
     for j = 1:N
-      x_h[i+1,j, 1:end] = A1*vec(x_h[i,j, 1:end]) + A2*vec(x_v[i,j,1:end]) + B1 * vec(inputs[i,j,1:end])
-      x_v[i,j+1, 1:end] = A3*vec(x_h[i,j, 1:end]) + A4*vec(x_v[i,j,1:end]) + B2 * vec(inputs[i,j,1:end])
-      output[i,j, 1:end] = C1 * vec(x_h[i,j, 1:end]) + C2 * vec(x_v[i,j,1:end]) + D * vec(inputs[i,j,1:end])
+      input_ij = vec(inputs[i,j,1:end])';
+      x_h[i+1,j, 1:end] = A1*vec(x_h[i,j, 1:end]) + A2*vec(x_v[i,j,1:end]) + B1 * input_ij
+      x_v[i,j+1, 1:end] = A3*vec(x_h[i,j, 1:end]) + A4*vec(x_v[i,j,1:end]) + B2 * input_ij
+      output[i,j, 1:end] = C1 * vec(x_h[i,j, 1:end]) + C2 * vec(x_v[i,j,1:end]) + D * input_ij
     end
   end
   return output

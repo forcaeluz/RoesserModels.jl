@@ -99,9 +99,9 @@ end
 
 function test_simulation()
   print_with_color(:blue, "Testing the simulation of a model.\n")
-  u = HDF5.load("test1.jld", "u")
-  y_expected = HDF5.load("test1.jld", "y")
-  sys = HDF5.load("test1.jld", "sys")
+  u = load("test1.jld", "u")
+  y_expected = load("test1.jld", "y")
+  sys = load("test1.jld", "sys")
   A1 = sys["A1"]
   A2 = sys["A2"]
   A4 = sys["A4"]
@@ -109,7 +109,7 @@ function test_simulation()
   B2 = sys["B2"]
   C1 = sys["C1"]
   C2 = sys["C2"]
-  D = sys["D"]
+  D = [sys["D"]]
   system = RoesserModels.CrsdRoesserModel(A1, A2, A4, B1, B2, C1, C2, D)
   y = RoesserModels.simulate(system, u)
   @test_approx_eq(y_expected, y)
