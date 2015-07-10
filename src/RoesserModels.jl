@@ -102,7 +102,7 @@ Generate a completely random system. No check is performed for observability
 or controllability.
 
 """->
-function randomsystem(nh::Integer, nv::Integer, ouputs::Integer, inputs::Integer)
+function randomsystem(nh::Integer, nv::Integer, outputs::Integer, inputs::Integer)
   A1 = randn(nh, nh);
   A2 = randn(nh, nv);
   A3 = randn(nv, nh);

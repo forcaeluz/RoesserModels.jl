@@ -69,7 +69,8 @@ function test_invalid_io()
 end
 
 function test_randommodel()
-
+  print_with_color(:blue, "Testing the creation of a random model.\n")
+  RoesserModels.randomsystem(3, 2, 1, 1)
 end
 
 function test_validcrsd()
@@ -90,4 +91,5 @@ test_validmodel()
 test_invalidhorizontal()
 test_invalidvertical()
 test_invalid_io()
+test_randommodel()
 print_with_color(:green, "File: ", tested_file, " has been tested \n")
