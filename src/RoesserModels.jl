@@ -56,11 +56,11 @@ References:
 """->
 function CrsdRoesserModel(A1, A2, A4, B1, B2, C1, C2, D)
   x_h_dim = size(A1, 1)
-  x_v_dim = size(A3, 1)
+  x_v_dim = size(A4, 1)
   out_dim = size(C1, 1)
   in_dim = size(B1, 2)
   A3 = zeros(x_v_dim, x_h_dim);
-  return RoesserModel(A1, A2, A3, A4, B1, B2, C1, C2, D, in_dim, out_dim, x_h_dim, x_v_dim)
+  return RoesserModel(A1, A2, A3, A4, B1, B2, C1, C2, D)
 end
 
 @doc doc"""

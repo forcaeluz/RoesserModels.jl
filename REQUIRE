@@ -1,3 +1,4 @@
 # julia_ao requires the following packages
 Docile
+HDF5
 #Plotly
